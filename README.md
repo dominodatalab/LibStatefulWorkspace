@@ -43,7 +43,7 @@ sys.path.append("/mnt/code/python/libraries")
 
 ## All Set
 
-Your custom libraries will not survive custom restarts
+Your custom libraries will now survive workspace restarts
 
 ## But what if I am using Domino File System
 
