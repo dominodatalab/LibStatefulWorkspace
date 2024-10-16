@@ -46,3 +46,33 @@ sys.path.append("/mnt/code/python/libraries")
 Your custom libraries will not survive custom restarts
 
 ## But what if I am using Domino File System
+
+Everything remains intact. Except use the file `/mnt/.dominoignore` instead `/mnt/code/.gitignore`
+And the relevant lines in the file are
+```
+code/python/
+```
+
+I made the simplification to use the path `/mnt/code/requirements-custom.txt` instead of `/mnt/requirements-custom.txt`. That was so I could
+use the same Domino Environment above. You can use the latter and make the appropriate changes to the pre-run script
+
+```
+set -e
+TARGET_PATH=/mnt/code/python/libraries
+mkdir -p $TARGET_PATH
+pip install --upgrade --target $TARGET_PATH -r /mnt/requirements-custom.txt
+echo "Packages installed to $TARGET_PATH and PYTHONPATH updated."
+```
+
+or even
+```
+set -e
+TARGET_PATH=/mnt/python/libraries
+mkdir -p $TARGET_PATH
+pip install --upgrade --target $TARGET_PATH -r /mnt/requirements-custom.txt
+echo "Packages installed to $TARGET_PATH and PYTHONPATH updated."
+```
+and use the following line in the `.dominoignore`
+```
+python/
+```
