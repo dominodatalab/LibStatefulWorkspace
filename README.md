@@ -14,6 +14,7 @@ You will need to add the following pre-run script in the Environment definition
 #!/bin/bash
 set -e
 TARGET_PATH=/mnt/code/python/libraries
+mkdir -p $TARGET_PATH
 pip install --upgrade --target $TARGET_PATH -r /mnt/code/requirements-custom.txt
 echo "Packages installed to $TARGET_PATH and PYTHONPATH updated."
 ```
@@ -43,3 +44,5 @@ sys.path.append("/mnt/code/python/libraries")
 ## All Set
 
 Your custom libraries will not survive custom restarts
+
+## But what if I am using Domino File System
